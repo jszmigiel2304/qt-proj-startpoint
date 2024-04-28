@@ -1,0 +1,31 @@
+#ifndef START_APP_NAMESPACE_APP_H
+#define START_APP_NAMESPACE_APP_H
+
+#include <memory.h>
+
+#include <QGuiApplication>
+
+#include <Base/Exception.h>
+#include <Gui.h>
+
+namespace START_APP_NAMESPACE
+{
+    class App : public QGuiApplication
+    {
+        Q_OBJECT
+
+    public:
+        typedef std::unique_ptr<App> UnqPtr;
+        typedef std::shared_ptr<App> ShrPtr;
+
+        explicit App(int &argc, char **argv);
+        virtual ~App() override;
+
+        virtual void run();
+
+    private:
+        Gui::UnqPtr m_guiEngine;
+    };
+}
+
+#endif //START_APP_NAMESPACE_APP_H
