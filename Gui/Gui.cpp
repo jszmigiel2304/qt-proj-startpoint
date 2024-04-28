@@ -1,5 +1,7 @@
 #include "Gui.h"
 
+#include <QStringLiteral>
+
 #include "GuiException.h"
 
 using namespace START_APP_NAMESPACE;
@@ -26,5 +28,6 @@ Gui::~Gui()
 
 void Gui::run()
 {
-    m_engine.load("qrc:/Main.qml");
+    const QUrl _url( QStringLiteral("../Gui/Qml/Main.qml") );
+    m_engine.load(_url);
 }

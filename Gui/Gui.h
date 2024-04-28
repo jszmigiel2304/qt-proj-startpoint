@@ -10,7 +10,7 @@ namespace START_APP_NAMESPACE
 {
     class Gui : public QObject
     {
-        Q_OBJECT
+        //Q_OBJECT
 
     public:
         typedef std::unique_ptr<Gui> UnqPtr;
@@ -19,7 +19,7 @@ namespace START_APP_NAMESPACE
         explicit Gui(QObject *parent = nullptr);
         virtual ~Gui() override;
 
-        virtual void run();
+        void run();
 
     private:
         QQmlApplicationEngine m_engine;

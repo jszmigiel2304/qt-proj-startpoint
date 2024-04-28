@@ -1,11 +1,13 @@
-#include <Gui.h>
+#include "App.h"
 
 using namespace START_APP_NAMESPACE;
 
 int main(int argc, char *argv[])
 {
-    Gui app(argc, argv);
+    App _app(argc, argv);
 
+    _app.init();
+    _app.run();
 
-    return app.exec();
+    return _app.exec();
 }

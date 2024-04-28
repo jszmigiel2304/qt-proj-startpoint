@@ -12,7 +12,7 @@ namespace START_APP_NAMESPACE
 {
     class App : public QGuiApplication
     {
-        Q_OBJECT
+        //Q_OBJECT
 
     public:
         typedef std::unique_ptr<App> UnqPtr;
@@ -21,7 +21,8 @@ namespace START_APP_NAMESPACE
         explicit App(int &argc, char **argv);
         virtual ~App() override;
 
-        virtual void run();
+        void init();
+        void run();
 
     private:
         Gui::UnqPtr m_guiEngine;
