@@ -1,3 +1,7 @@
+CMakeLists.txt.user
+Build*
+build*
+
 # Prerequisites
 *.d
 
