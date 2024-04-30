@@ -16,3 +16,6 @@ target_link_libraries(Gui
 )
 
 target_include_directories(Gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../Core)
+target_include_directories(Gui PRIVATE ${SPDLOG_INCLUDE_DIR})
+target_include_directories(Gui PRIVATE "../Third/")
+

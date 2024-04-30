@@ -8,9 +8,11 @@
 #include <Base/Exception.h>
 #include <Gui.h>
 
+#include <Log/LoggingDevice.h>
+
 namespace START_APP_NAMESPACE
 {
-    class App : public QGuiApplication
+class App : public QGuiApplication, public LoggingDevice
     {
         //Q_OBJECT
 

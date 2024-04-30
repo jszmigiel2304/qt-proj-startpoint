@@ -17,3 +17,4 @@ target_link_libraries(qt-proj-startpoint
 
 target_include_directories(qt-proj-startpoint PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../Core)
 target_include_directories(qt-proj-startpoint PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../Gui)
+target_include_directories(qt-proj-startpoint PRIVATE "../Third/")

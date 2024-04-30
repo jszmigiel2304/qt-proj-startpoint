@@ -1,5 +1,4 @@
 // Module.h
-
 #ifndef START_APP_NAMESPACE_MODULE_H
 #define START_APP_NAMESPACE_MODULE_H
 
@@ -31,6 +30,7 @@ namespace START_APP_NAMESPACE
         void stop() final;
 
     protected:
+
         virtual void run() = 0;
     };
 

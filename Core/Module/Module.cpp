@@ -1,7 +1,6 @@
 // Module.cpp
 
 #include "Module.h"
-
 #include "ModulePrivate.h"
 
 using namespace START_APP_NAMESPACE;

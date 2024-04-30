@@ -13,6 +13,7 @@ namespace START_APP_NAMESPACE
     {
         Module::ThreadingBehavior m_threadingBehavior;
         QThread m_thread;
+
         friend class Module;
     };
 }

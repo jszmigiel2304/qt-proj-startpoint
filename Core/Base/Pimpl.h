@@ -28,7 +28,7 @@ namespace START_APP_NAMESPACE
 
 #define INITIALIZE_PRIVATE(Class)                                               \
     try {                                                                       \
-        m_Private = std::make_unique<Class##Private>();                         \
+        m_Private.reset( new Class##Private() );                                \
     } catch ( const std::bad_alloc& e ) {                                       \
         throw PimplException(QString("bad_alloc exception in ") + #Class);      \
     } catch ( ... ) {                                                           \

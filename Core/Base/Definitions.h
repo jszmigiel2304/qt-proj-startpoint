@@ -5,7 +5,7 @@
 
 namespace START_APP_NAMESPACE
 {
-
+    constexpr auto LOG_DIR = "./Log/";
 }
 
 #endif //START_APP_NAMESPACE_DEFINITIONS_H
