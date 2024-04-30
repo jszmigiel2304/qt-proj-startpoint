@@ -1,7 +1,9 @@
 add_library( Core STATIC
+    Base/Base.h                 Base/Base.cpp
     Base/Exception.h            Base/Exception.cpp
     Base/Definitions.h
     Base/Pimpl.h
+    Base/Concepts.h
 
     Interfaces/IModule.h
 

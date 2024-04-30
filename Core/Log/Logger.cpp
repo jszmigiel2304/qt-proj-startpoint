@@ -1,11 +1,15 @@
 // Logger.cpp
 #include "Logger.h"
 
+#include <map>
+
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 
+#include "../Base/Base.h"
 
 using namespace START_APP_NAMESPACE;
+
 
 Logger::Logger(const std::string& filePath)
 {
@@ -18,4 +22,46 @@ Logger::Logger(const std::string& filePath)
 std::shared_ptr<spdlog::logger> Logger::getLogger()
 {
     return m_logger;
+}
+
+void Logger::logAction(LogAction action, LogLevelT level)
+{
+    if(!m_logger) {
+        return;
+    }
+
+    std::string _actionStr = Base::toString(action);
+    std::string _actionDesc = actionDesc(action);
+
+    switch(level) {
+    case LogLevelT::trace:      { m_logger->trace("[{}][{}]", _actionStr, _actionDesc);       break; }
+    case LogLevelT::debug:      { m_logger->debug("[{}][{}]", _actionStr, _actionDesc);       break; }
+    case LogLevelT::info:       { m_logger->info("[{}][{}]", _actionStr, _actionDesc);        break; }
+    case LogLevelT::warn:       { m_logger->warn("[{}][{}]", _actionStr, _actionDesc);        break; }
+    case LogLevelT::err:        { m_logger->error("[{}][{}]", _actionStr, _actionDesc);       break; }
+    case LogLevelT::critical:   { m_logger->critical("[{}][{}]", _actionStr, _actionDesc);    break; }
+    case LogLevelT::off:        { return; }
+    case LogLevelT::n_levels:   { return; }
+    }
+    m_logger->flush();
+}
+
+std::string Logger::actionDesc(LogAction action)
+{
+    static const std::map<Logger::LogAction, const std::string> map = {
+        {   Logger::Core_LoggerCreate,           "Logger created."               },
+        {   Logger::Core_LoggerDestroyed,        "Logger destroyed."             },
+        {   Logger::UndefinedAction,             "Undefined action to log."      },
+    };
+    std::string _ret = map.contains(action) ? map.at(action) : map.at(Logger::UndefinedAction);
+    return map.contains(action) ? map.at(action) : map.at(Logger::UndefinedAction);
+}
+
+void Logger::flush()
+{
+    if(!m_logger) {
+        return;
+    }
+
+    m_logger->flush();
 }

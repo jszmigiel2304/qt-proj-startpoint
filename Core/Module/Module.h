@@ -8,6 +8,7 @@
 
 #include "../Interfaces/IModule.h"
 #include "../Base/Pimpl.h"
+#include "../Base/Definitions.h"
 
 namespace START_APP_NAMESPACE
 {
@@ -16,7 +17,7 @@ namespace START_APP_NAMESPACE
         DECLARE_PRIVATE(Module)
 
     public:
-        enum ThreadingBehavior {
+        enum ThreadingBehavior : EnumT {
             RunInCurrentThread,
             RunInNewThread
         };
