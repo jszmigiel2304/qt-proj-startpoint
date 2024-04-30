@@ -13,11 +13,18 @@
 
 namespace START_APP_NAMESPACE
 {
+    Q_NAMESPACE
+    enum LogAction : EnumExtendedT {
+        Core_LoggerCreate,
+        Core_LoggerDestroyed,
+
+        UndefinedAction
+    };
+    Q_ENUM_NS(LogAction)
+
     class LoggerManager;
     class LoggerManagerPrivate;
-    class Logger : public QObject {
-        Q_OBJECT
-
+    class Logger {
         friend class LoggerManager;
         friend class LoggerManagerPrivate;
 
@@ -31,14 +38,6 @@ namespace START_APP_NAMESPACE
 
         std::shared_ptr<spdlog::logger> getLogger();
         void flush();
-
-        enum LogAction : EnumExtendedT {
-            Core_LoggerCreate,
-            Core_LoggerDestroyed,
-
-            UndefinedAction
-        };
-        Q_ENUM(LogAction)
 
         void logAction(LogAction action, LogLevelT level);
 

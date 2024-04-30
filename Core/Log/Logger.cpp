@@ -48,13 +48,13 @@ void Logger::logAction(LogAction action, LogLevelT level)
 
 std::string Logger::actionDesc(LogAction action)
 {
-    static const std::map<Logger::LogAction, const std::string> map = {
-        {   Logger::Core_LoggerCreate,           "Logger created."               },
-        {   Logger::Core_LoggerDestroyed,        "Logger destroyed."             },
-        {   Logger::UndefinedAction,             "Undefined action to log."      },
+    static const std::map<LogAction, const std::string> map = {
+        {   Core_LoggerCreate,           "Logger created."               },
+        {   Core_LoggerDestroyed,        "Logger destroyed."             },
+        {   UndefinedAction,             "Undefined action to log."      },
     };
-    std::string _ret = map.contains(action) ? map.at(action) : map.at(Logger::UndefinedAction);
-    return map.contains(action) ? map.at(action) : map.at(Logger::UndefinedAction);
+    std::string _ret = map.contains(action) ? map.at(action) : map.at(UndefinedAction);
+    return map.contains(action) ? map.at(action) : map.at(UndefinedAction);
 }
 
 void Logger::flush()

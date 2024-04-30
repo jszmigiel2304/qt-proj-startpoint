@@ -12,7 +12,7 @@ Logger::ShrPtr LoggerManager::LoggerManagerPrivate::newLogger(const std::string 
         //auto [iter, succ] = m_loggers.emplace( std::make_pair(fileName, new Logger(_filePath) )  );
         auto [iter, succ] = m_loggers.emplace(
             std::make_pair(fileName, std::shared_ptr<Logger>( new Logger(_filePath), [](Logger* ptr) {
-                               ptr->logAction(Logger::Core_LoggerDestroyed, Logger::LogLevelT::info);
+                               ptr->logAction(Core_LoggerDestroyed, Logger::LogLevelT::info);
                 delete ptr;
             }) )
         );
@@ -20,7 +20,7 @@ Logger::ShrPtr LoggerManager::LoggerManagerPrivate::newLogger(const std::string 
             return nullptr;
         }
 
-        iter->second->logAction(Logger::Core_LoggerCreate, Logger::LogLevelT::info);
+        iter->second->logAction(Core_LoggerCreate, Logger::LogLevelT::info);
         return iter->second;
     } catch ( const std::bad_alloc& e ) {
         throw CoreException("bad_alloc exception in LoggerManager");
